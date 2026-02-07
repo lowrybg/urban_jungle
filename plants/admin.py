@@ -10,4 +10,3 @@ class PlantAdmin(admin.ModelAdmin):
     list_display = ('name', 'species', 'room', 'height_cm')
     list_filter = ('room',)
 
-# Register your models here.
