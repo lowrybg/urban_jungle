@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}My Jungle{% endblock %}
+
+{% block content %}
+    <h2>My Plant Collection</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
+        {% for plant in plants %}
+            <div style="border: 1px solid #a5d6a7; padding: 15px; border-radius: 8px; background: white;">
+                <h3>{{ plant.name }}</h3>
+                <p><strong>Room:</strong> {{ plant.room.name|default:"Unassigned" }}</p>
+                <p><strong>Water:</strong> {{ plant.water_needs_ml }}ml / week</p>
+                <a href="#" style="color: #2e7d32; text-decoration: none;">See Care Tips &rarr;</a>
+            </div>
+        {% empty %}
+            <p>No plants yet. Go to Admin to add some!</p>
+        {% endfor %}
+    </div>
+{% endblock %}
