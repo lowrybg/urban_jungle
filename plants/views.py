@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
 from .forms import PlantForm
 from .models import Plant
@@ -26,3 +26,9 @@ class PlantDeleteView(DeleteView):
     model = Plant
     template_name = 'plants/delete_plant.html'
     success_url = reverse_lazy('catalog')
+
+
+class PlantDetailView(DetailView):
+    model = Plant
+    template_name = 'plants/detail_plant.html'
+    context_object_name = 'plant'

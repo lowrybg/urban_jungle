@@ -1,5 +1,8 @@
 from django.db import models
 
+from plants.validators import validate_start_with_capital
+
+
 class Room(models.Model):
     SUNLIGHT_CHOICES = [
         ('LOW', 'Low Light'),
@@ -14,7 +17,9 @@ class Room(models.Model):
         return self.name
 
 class Plant(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100,
+                            validators=[validate_start_with_capital]
+                            )
     species = models.CharField(max_length=100, blank=True)
 
     height_cm = models. FloatField(help_text="Height in centimeters")

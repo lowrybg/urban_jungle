@@ -14,7 +14,7 @@
                     <a href="{% url 'edit_plant' plant.pk %}" style="color: orange; margin-right: 10px;">Edit</a>
                     <a href="{% url 'delete_plant' plant.pk %}" style="color: red;">Delete</a>
                 </div>
-                <a href="#" style="color: #2e7d32; text-decoration: none;">See Care Tips &rarr;</a>
+                <a href="{% url 'detail_plant' plant.pk %}" style="color: #2e7d32; text-decoration: none;">See Details &rarr;</a>
             </div>
         {% empty %}
             <p>No plants yet. Go to Admin to add some!</p>

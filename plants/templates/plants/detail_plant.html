@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div style="background: white; padding: 20px; border-radius: 8px;">
+        <h1>{{ plant.name }}</h1>
+        <p><strong>Species:</strong> {{ plant.species }}</p>
+        <p><strong>Room:</strong> {{ plant.room.name }} ({{ plant.room.get_light_level_display }})</p>
+        <hr>
+        
+        <h3>Care Info</h3>
+        <p><strong>Water:</strong> {{ plant.water_needs_ml }}ml / week</p>
+        <p><strong>Height:</strong> {{ plant.height_cm }} cm</p>
+
+        <div style="margin-top: 20px;">
+            <a href="{% url 'edit_plant' plant.pk %}" style="color: orange;">Edit</a> | 
+            <a href="{% url 'delete_plant' plant.pk %}" style="color: red;">Delete</a> |
+            <a href="{% url 'catalog' %}">Back to Jungle</a>
+        </div>
+    </div>
+{% endblock %}
+
