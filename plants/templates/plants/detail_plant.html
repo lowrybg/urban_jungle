@@ -5,16 +5,24 @@
         <p><strong>Species:</strong> {{ plant.species }}</p>
         <p><strong>Room:</strong> {{ plant.room.name }} ({{ plant.room.get_light_level_display }})</p>
         <hr>
-        
+
         <h3>Care Info</h3>
         <p><strong>Water:</strong> {{ plant.water_needs_ml }}ml / week</p>
         <p><strong>Height:</strong> {{ plant.height_cm }} cm</p>
 
+        <h4>Special Care Tips</h4>
+        <ul>
+            {% for tip in plant.care_tips.all %}
+                <li><strong>{{ tip.title }}</strong>: {{ tip.instructions }}</li>
+            {% empty %}
+                <li>No special care tips added yet.</li>
+            {% endfor %}
+        </ul>
+
         <div style="margin-top: 20px;">
-            <a href="{% url 'edit_plant' plant.pk %}" style="color: orange;">Edit</a> | 
+            <a href="{% url 'edit_plant' plant.pk %}" style="color: orange;">Edit</a> |
             <a href="{% url 'delete_plant' plant.pk %}" style="color: red;">Delete</a> |
             <a href="{% url 'catalog' %}">Back to Jungle</a>
         </div>
     </div>
 {% endblock %}
-
