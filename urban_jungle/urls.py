@@ -22,3 +22,7 @@ urlpatterns = [
     path('', include('common.urls')),
     path('', include('plants.urls')),
 ]
+
+
+
+handler404 = 'common.views.custom_404'
