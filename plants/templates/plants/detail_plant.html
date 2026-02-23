@@ -2,6 +2,11 @@
 {% block content %}
     <div style="background: white; padding: 20px; border-radius: 8px;">
         <h1>{{ plant.name }}</h1>
+        {% if plant.photo %}
+            <div style="margin-bottom: 15px;">
+                <img src="{{ plant.photo.url }}" alt="{{ plant.name }}" style="max-width: 300px; border-radius: 8px; border: 1px solid #ddd;">
+            </div>
+        {% endif %}
         <p><strong>Species:</strong> {{ plant.species }}</p>
         <p><strong>Room:</strong> {{ plant.room.name }} ({{ plant.room.get_light_level_display }})</p>
         <hr>
