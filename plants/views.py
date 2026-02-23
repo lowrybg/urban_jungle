@@ -45,3 +45,14 @@ class RoomCreateView(CreateView):
     form_class = RoomForm
     template_name = 'plants/create_room.html'
     success_url = reverse_lazy('room_list')
+
+class RoomUpdateView(UpdateView):
+    model = Room
+    form_class = RoomForm
+    template_name = 'plants/edit_room.html'
+    success_url = reverse_lazy('room_list')
+
+class RoomDeleteView(DeleteView):
+    model = Room
+    template_name = 'plants/delete_room.html'
+    success_url = reverse_lazy('room_list')

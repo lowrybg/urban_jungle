@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div style="background: white; padding: 20px; border-radius: 8px;">
+        <h1>Are you sure?</h1>
+        <p>Do you really want to delete the room "<strong>{{ object.name }}</strong>"?</p>
+        <p style="color: red; font-size: 0.9em;">Warning: This will also affect any plants assigned to this room.</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" style="background: #dc3545; color: white; padding: 10px 15px; border: none; border-radius: 5px;">Yes, Delete</button>
+            <a href="{% url 'room_list' %}" style="margin-left: 15px;">Cancel</a>
+        </form>
+    </div>
+{% endblock %}

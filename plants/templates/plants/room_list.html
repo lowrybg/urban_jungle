@@ -9,6 +9,10 @@
             {% for room in rooms %}
                 <li style="margin-bottom: 10px;">
                     <strong>{{ room.name }}</strong> (Light Levell: {{ room.get_light_level_display }})
+                <span style=" margin-left: 15px;">
+                    <a href="{% url 'edit_room' room.pk %}" style="color: orange; text-decoration: none;">Edit</a> |
+                        <a href="{% url 'delete_room' room.pk %}" style="color: red; text-decoration: none;">Delete</a>
+                </span>
                 </li>
             {% empty %}
                 <li>No rooms have been added yet.</li>
