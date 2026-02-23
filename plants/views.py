@@ -71,4 +71,3 @@ class PlantByRoomListView(ListView):
         context['room'] = get_object_or_404(Room, pk=self.kwargs['room_id'])
         return context
 
-    

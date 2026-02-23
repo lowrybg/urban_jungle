@@ -15,8 +15,9 @@
 <body>
     <nav>
         <a href="{% url 'home' %}">Urban Jungle</a>
-        <a href="#">My Plants</a>
-        <a href="#">Add Plant</a>
+        <a href="{% url 'catalog' %}">My Plants</a>
+        <a href="{% url 'create_plant' %}">Add Plant</a>
+        <a href="{% url 'room_list' %}">Rooms</a>
     </nav>
 
     <div class="container">
