@@ -1,6 +1,6 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
-
+from django.shortcuts import get_object_or_404
 
 from .forms import PlantCreateForm, PlantUpdateForm, RoomForm
 from .models import Plant, Room
@@ -56,3 +56,19 @@ class RoomDeleteView(DeleteView):
     model = Room
     template_name = 'plants/delete_room.html'
     success_url = reverse_lazy('room_list')
+
+class PlantByRoomListView(ListView):
+    model = Plant
+    template_name = 'plants/plants_by_room.html'
+    context_object_name = 'plants'
+
+
+    def get_queryset(self):
+        return Plant.objects.filter(room_id=self.kwargs['room_id'])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['room'] = get_object_or_404(Room, pk=self.kwargs['room_id'])
+        return context
+
+    

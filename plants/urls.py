@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import PlantListView, PlantCreateView, PlantUpdateView, PlantDeleteView, PlantDetailView, RoomListView, \
-RoomCreateView, RoomUpdateView, RoomDeleteView
+RoomCreateView, RoomUpdateView, RoomDeleteView, PlantByRoomListView
 
 urlpatterns = [
     path('catalog/', PlantListView.as_view(), name='catalog'),
@@ -14,4 +14,5 @@ urlpatterns = [
     path('rooms/create/', RoomCreateView.as_view(), name='create_room'),
     path('rooms/edit/<int:pk>/', RoomUpdateView.as_view(), name='edit_room'),
     path('rooms/delete/<int:pk>/', RoomDeleteView.as_view(), name='delete_room'),
+    path('rooms/<int:room_id>/plants/', PlantByRoomListView.as_view(), name='plants_by_room'),
 ]
