@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div style="background: white; padding: 20px; border-radius: 8px;">
+        <h1>Add a New Room</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" style="background: #2e7d32; color: white; padding: 10px 15px; border: none; border-radius: 5px;">Save Room</button>
+        </form>
+
+        <div style="margin-top: 20px;">
+            <a href="{% url 'room_list' %}">Cancel</a>
+        </div>
+
+    </div>
+{% endblock %}
+

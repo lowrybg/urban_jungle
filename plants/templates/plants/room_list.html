@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div style="background: white; padding: 20px; border-radius: 8px;">
+        <h1>Manage Rooms</h1>
+        <a href="{% url 'create_room' %}" style="color: #2e7d32; font-weight: bold; display: inline-block; margin-bottom: 20px;">+ Add New Room</a>
+        <ul>
+            {% for room in rooms %}
+                <li style="margin-bottom: 10px;">
+                    <strong>{{ room.name }}</strong> (Light Levell: {{ room.get_light_level_display }})
+                </li>
+            {% empty %}
+                <li>No rooms have been added yet.</li>
+            {% endfor %}
+        </ul>
+
+        <div style="margin-top: 20px;">
+            <a href="{% url 'catalog' %}">Back to Catalog</a>
+        </div>
+    </div>
+{% endblock %}
+

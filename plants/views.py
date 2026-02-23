@@ -2,8 +2,8 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
 
-from .forms import PlantCreateForm, PlantUpdateForm
-from .models import Plant
+from .forms import PlantCreateForm, PlantUpdateForm, RoomForm
+from .models import Plant, Room
 
 class PlantListView(ListView):
     model = Plant
@@ -31,3 +31,17 @@ class PlantDetailView(DetailView):
     model = Plant
     template_name = 'plants/detail_plant.html'
     context_object_name = 'plant'
+
+
+class RoomListView(ListView):
+    model = Room
+    template_name = 'plants/room_list.html'
+    context_object_name = 'rooms'
+
+
+
+class RoomCreateView(CreateView):
+    model = Room
+    form_class = RoomForm
+    template_name = 'plants/create_room.html'
+    success_url = reverse_lazy('room_list')
